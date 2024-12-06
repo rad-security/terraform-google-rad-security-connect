@@ -37,7 +37,7 @@ resource "google_service_account_iam_binding" "rad_workload_identity_user" {
 
 resource "google_project_iam_custom_role" "rad_cloud_connect" {
   project     = local.project_name
-  role_id     = "rad_security_cloud_connect_role_2"
+  role_id     = "rad_security_cloud_connect_role"
   title       = "RAD Security Cloud Connect Role"
   description = "RAD Security's Google Cloud Role to retrieve Google Cloud resources"
   permissions = [
