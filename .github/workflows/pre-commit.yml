@@ -1,0 +1,17 @@
+name: checks
+
+on:
+  pull_request:
+
+jobs:
+
+ pre-commit:
+   permissions:
+     contents: read
+   runs-on: ubuntu-latest
+   container: ksoc/terraform-toolkit:1.0.8
+   steps:
+     - name: clone repo
+       uses: actions/checkout@v4
+     - name: pre-commit checks
+       run: pre-commit-checks
