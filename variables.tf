@@ -1,6 +1,6 @@
 variable "aws_account_id" {
   description = "RAD Security's AWS account ID to authenticate with your Google Cloud project"
-  default     = "652031173150"
+  default     = "955322216602"
 }
 
 variable "aws_role_name" {
