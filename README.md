@@ -126,7 +126,7 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_aws_account_id"></a> [aws\_account\_id](#input\_aws\_account\_id) | RAD Security's AWS account ID to authenticate with your Google Cloud project | `string` | `"652031173150"` | no |
+| <a name="input_aws_account_id"></a> [aws\_account\_id](#input\_aws\_account\_id) | RAD Security's AWS account ID to authenticate with your Google Cloud project | `string` | `"955322216602"` | no |
 | <a name="input_aws_role_name"></a> [aws\_role\_name](#input\_aws\_role\_name) | RAD Security's AWS Role Name to authenticate with your Google Cloud project | `string` | `"rad-security-connector"` | no |
 | <a name="input_gcp_project_name"></a> [gcp\_project\_name](#input\_gcp\_project\_name) | GCP project name (optional - will use current project name if not specified) | `string` | `null` | no |
 | <a name="input_gcp_project_number"></a> [gcp\_project\_number](#input\_gcp\_project\_number) | GCP project number (optional - will use current project number if not specified) | `string` | `null` | no |
