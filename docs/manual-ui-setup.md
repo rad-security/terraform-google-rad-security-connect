@@ -21,7 +21,7 @@ stored anywhere.
 | 4 | Workload Identity Pool | `rad-security-identity-pool` |
 | 5 | Workload Identity Pool AWS provider | `rad-security-aws-provider` |
 | 6 | Service-account access binding | federated AWS identity → service account |
-| 7 | Register the connection in the RAD Security UI | — |
+| 7 | Send the connection details to RAD Security to register | — |
 
 ### Fixed values used throughout (do not change)
 
@@ -468,21 +468,23 @@ principalSet://iam.googleapis.com/projects/YOUR_PROJECT_NUMBER/locations/global/
 
 ---
 
-## Step 7 — Register the connection in the RAD Security UI
+## Step 7 — Send your connection details to RAD Security
 
-The Terraform module's final step registers the project with RAD. Do this in
-the **RAD Security console** (not Google Cloud). RAD needs three values:
+The Terraform module's final step registers the project with RAD. **Today this
+registration is done by the RAD Security team, not self-service** — so please
+**send the three values below to your RAD Security contact** and they'll
+complete the registration on their side.
 
-| RAD field | Value to enter |
-|-----------|----------------|
+> 📌 **Coming soon:** we're building a proper Google Cloud connection screen in
+> the RAD Security console so you'll be able to enter these values yourself,
+> without involving us. Until that ships, the manual hand-off below is the way
+> to connect.
+
+| Field | Value to send |
+|-------|----------------|
 | **Service account email** | `rad-security-cloud-connect@YOUR_PROJECT_ID.iam.gserviceaccount.com` |
 | **Workload Identity Pool provider name** | `projects/YOUR_PROJECT_NUMBER/locations/global/workloadIdentityPools/rad-security-identity-pool/providers/rad-security-aws-provider` |
 | **Project number** | `YOUR_PROJECT_NUMBER` |
-
-In RAD Security: go to the **Google Cloud integration / Add connection** flow
-and paste those three values. (If your RAD console doesn't expose a manual form,
-send these three values to your RAD Security contact and they'll complete the
-registration.)
 
 Substitute `YOUR_PROJECT_ID` and `YOUR_PROJECT_NUMBER` with your real values —
 **the provider name uses the numeric project _number_, not the project ID.**
