@@ -3,15 +3,46 @@ name: checks
 on:
   pull_request:
 
+env:
+  # Keep in sync with ksoc-private/docker-terraform-toolkit
+  TERRAFORM_VERSION: 1.16.5
+  TERRAFORM_DOCS_VERSION: 0.24.0
+
 jobs:
 
  pre-commit:
    permissions:
      contents: read
+   # Tools are installed on the runner instead of using the terraform-toolkit
+   # container: anonymous pulls from public.ecr.aws often fail on shared
+   # GitHub runner IPs with "toomanyrequests: Data limit exceeded".
    runs-on: ubuntu-latest
-   container: ksoc/terraform-toolkit:1.0.8
    steps:
      - name: clone repo
        uses: actions/checkout@v4
+
+     - name: setup terraform
+       uses: hashicorp/setup-terraform@v3
+       with:
+         terraform_version: ${{ env.TERRAFORM_VERSION }}
+         terraform_wrapper: false
+
+     - name: setup terraform-docs
+       run: |
+         set -euo pipefail
+         cd "$(mktemp -d)"
+         base="https://github.com/terraform-docs/terraform-docs/releases/download/v${TERRAFORM_DOCS_VERSION}"
+         tarball="terraform-docs-v${TERRAFORM_DOCS_VERSION}-linux-amd64.tar.gz"
+         curl -fsSLO "${base}/${tarball}"
+         curl -fsSLO "${base}/terraform-docs-v${TERRAFORM_DOCS_VERSION}.sha256sum"
+         grep " ${tarball}\$" "terraform-docs-v${TERRAFORM_DOCS_VERSION}.sha256sum" | sha256sum -c -
+         tar -xzf "${tarball}" terraform-docs
+         sudo install terraform-docs /usr/local/bin/terraform-docs
+
+     - name: setup python
+       uses: actions/setup-python@v5
+       with:
+         python-version: '3.x'
+
      - name: pre-commit checks
-       run: pre-commit-checks
+       uses: pre-commit/action@v3.0.1

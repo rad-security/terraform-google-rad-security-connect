@@ -94,14 +94,14 @@ module "rad_security_connect" {
 ## Requirements
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0.8 |
 | <a name="requirement_rad-security"></a> [rad-security](#requirement\_rad-security) | >= 1.1.6 |
 
 ## Providers
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | <a name="provider_google"></a> [google](#provider\_google) | n/a |
 | <a name="provider_rad-security"></a> [rad-security](#provider\_rad-security) | >= 1.1.6 |
 
@@ -112,7 +112,7 @@ No modules.
 ## Resources
 
 | Name | Type |
-|------|------|
+| ---- | ---- |
 | [google_iam_workload_identity_pool.rad_security_identity_pool](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/iam_workload_identity_pool) | resource |
 | [google_iam_workload_identity_pool_provider.rad_aws_provider](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/iam_workload_identity_pool_provider) | resource |
 | [google_project_iam_binding.rad_cloud_connect_access](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/project_iam_binding) | resource |
@@ -125,7 +125,7 @@ No modules.
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
+| ---- | ----------- | ---- | ------- | :------: |
 | <a name="input_aws_account_id"></a> [aws\_account\_id](#input\_aws\_account\_id) | RAD Security's AWS account ID to authenticate with your Google Cloud project | `string` | `"955322216602"` | no |
 | <a name="input_aws_role_name"></a> [aws\_role\_name](#input\_aws\_role\_name) | RAD Security's AWS Role Name to authenticate with your Google Cloud project | `string` | `"rad-security-connector"` | no |
 | <a name="input_gcp_project_name"></a> [gcp\_project\_name](#input\_gcp\_project\_name) | GCP project name (optional - will use current project name if not specified) | `string` | `null` | no |
